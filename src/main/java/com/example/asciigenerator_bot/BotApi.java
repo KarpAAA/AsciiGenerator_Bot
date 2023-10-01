@@ -46,7 +46,7 @@ public class BotApi extends TelegramLongPollingBot {
     private void postConsMethod(){
         executorService = Executors.newFixedThreadPool(10);
     }
-    
+
     @Value("${telegram.bot.name}")
     private String botName;
 

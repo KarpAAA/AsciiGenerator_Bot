@@ -1,11 +1,11 @@
 package com.example.asciigenerator_bot.services;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 @Component
-@Slf4j
+@Log4j2
 public class LoggerServices {
     public void logIntoFileRequests(Update update) {
         StringBuilder stringBuilder = new StringBuilder();

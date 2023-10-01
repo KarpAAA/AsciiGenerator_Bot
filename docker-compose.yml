@@ -1,0 +1,22 @@
+services:
+  bot:
+    image: karpaa/asciigenerator:1
+    restart: always
+    environment:
+      MYSQL_HOST: mysqldb
+  db:
+    container_name: mysqldb
+    image: mysql:8.0.33
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3307:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sentence_db
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8090:8080"

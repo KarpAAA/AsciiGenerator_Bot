@@ -1,12 +1,29 @@
-<configuration>
-    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>requestsFile.log</file>
-        <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
-        </encoder>
-    </appender>
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%style{%d{ISO8601}}{black} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable" />
+        </Console>
 
-    <root level="info">
-        <appender-ref ref="FILE" />
-    </root>
-</configuration>
+        <File name="RequestsFile"
+                     fileName="./logs/requests-file.log">
+            <PatternLayout>
+                <pattern>%d %p %C{1.} [%t] %m%n</pattern>
+            </PatternLayout>
+
+        </File>
+
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console" />
+        </Root>
+
+        <Logger level="warn" name="requestsLogger" additivity="false">
+            <AppenderRef ref="RequestsFile"/>
+        </Logger>
+    </Loggers>
+
+</Configuration>
